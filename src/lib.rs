@@ -18,7 +18,8 @@ pub fn sample() -> DialectHandle {
 
 melior::dialect! {
     name: "sample",
-    table_gen: r#"include "mlir/include/sample/SampleOps.td""#,
+    table_gen: r#"include "sample/SampleOps.td""#,
+    include_dirs: ["mlir/include/"],
 }
 
 #[cfg(test)]
