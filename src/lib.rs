@@ -66,13 +66,14 @@ mod tests {
             location,
         ));
 
-        let result = r#"module {
+        let result = &r#"
+module {
   func.func @test() {
     sample.sample
     return
   }
 }
-"#;
+"#[1..];
         assert_eq!(module.as_operation().to_string(), result);
     }
 }
