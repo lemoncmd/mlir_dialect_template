@@ -6,6 +6,7 @@ fn main() {
     println!("cargo:rustc-link-lib=static=SampleCAPI");
     println!("cargo:rustc-link-lib=static=MLIRSample");
     println!("cargo:rerun-if-changed=mlir");
+    println!("cargo:root={}", env::var("OUT_DIR").unwrap());
 
     bindgen::builder()
         .header("mlir/include/sample-c/Dialects.h")
