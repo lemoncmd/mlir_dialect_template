@@ -42,5 +42,4 @@ add_definitions(${LLVM_DEFINITIONS})
 add_subdirectory(include)
 add_subdirectory(lib)
 
-install(TARGETS SampleCAPI DESTINATION .)
-install(TARGETS MLIRSample DESTINATION .)
+install(TARGETS SampleCAPI MLIRSample DESTINATION .)
