@@ -4,7 +4,7 @@ name = "mlir_dialect_template"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
-links = "sample"
+links = "MLIRSample"
 
 [dependencies]
 melior = "0.18.6"

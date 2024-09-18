@@ -1,7 +1,9 @@
 use std::{env, path::Path};
 
 fn main() {
-    let dst = cmake::build("mlir");
+    let dst = cmake::Config::new("mlir")
+        // .register_dep("MLIRFoo") // when you want to register dependency
+        .build();
     println!("cargo:rustc-link-search=native={}", dst.display());
     println!("cargo:rustc-link-lib=static=SampleCAPI");
     println!("cargo:rustc-link-lib=static=MLIRSample");

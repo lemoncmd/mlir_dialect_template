@@ -42,4 +42,21 @@ add_definitions(${LLVM_DEFINITIONS})
 add_subdirectory(include)
 add_subdirectory(lib)
 
-install(TARGETS SampleCAPI MLIRSample DESTINATION .)
+# find_package(mlirfoo REQUIRED) # when you want to register dependency
+
+install(TARGETS SampleCAPI MLIRSample
+  DESTINATION .
+  EXPORT mlirsample-export
+  INCLUDES DESTINATION include build/include
+)
+
+install(DIRECTORY include/
+  DESTINATION include
+  FILES_MATCHING PATTERN "*.h" PATTERN "*.td"
+)
+
+install(EXPORT mlirsample-export
+  FILE mlirsample-config.cmake
+  DESTINATION cmake
+  EXPORT_LINK_INTERFACE_LIBRARIES
+)
