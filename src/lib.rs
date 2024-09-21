@@ -1,4 +1,4 @@
-mod import {
+mod ffi {
     #![allow(non_upper_case_globals)]
     #![allow(non_camel_case_types)]
     #![allow(non_snake_case)]
@@ -10,7 +10,7 @@ mod import {
 use melior::dialect::DialectHandle;
 
 pub fn sample() -> DialectHandle {
-    unsafe { DialectHandle::from_raw(import::mlirGetDialectHandle__sample__()) }
+    unsafe { DialectHandle::from_raw(ffi::mlirGetDialectHandle__sample__()) }
 }
 
 melior::dialect! {
