@@ -10,9 +10,13 @@ fn main() {
     println!("cargo:rerun-if-changed=mlir");
     println!("cargo:root={}", env::var("OUT_DIR").unwrap());
 
+    let header = "mlir/include/sample-c/Dialects.h";
+
     bindgen::builder()
-        .header("mlir/include/sample-c/Dialects.h")
+        .header(header)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+        .allowlist_recursively(false)
+        .allowlist_file(header)
         .generate()
         .unwrap()
         .write_to_file(Path::new(&env::var("OUT_DIR").unwrap()).join("bindings.rs"))

@@ -3,17 +3,14 @@ mod import {
     #![allow(non_camel_case_types)]
     #![allow(non_snake_case)]
     #![allow(unused)]
+    use mlir_sys::*;
     include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 }
 
 use melior::dialect::DialectHandle;
 
 pub fn sample() -> DialectHandle {
-    unsafe {
-        DialectHandle::from_raw(mlir_sys::MlirDialectHandle {
-            ptr: import::mlirGetDialectHandle__sample__().ptr,
-        })
-    }
+    unsafe { DialectHandle::from_raw(import::mlirGetDialectHandle__sample__()) }
 }
 
 melior::dialect! {
